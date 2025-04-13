@@ -1,0 +1,47 @@
+<h2>Create clients dynamic!</h2>
+<hr>
+
+<form [formGroup]="form">
+
+    <div formArrayName="clients">
+        <div *ngFor="let client of clients.controls; index as i">
+            <div [formGroupName]="i">
+                <div class="fullName blockInput">
+                    <label for="fullName-{{i}}">Nobres y apellidos</label>
+                    <input type="text" name="fullName" id="fullName-{{i}}" [value]="client.value.fullName"
+                        formControlName="fullName">
+                </div>
+
+                <div class="documentType blockInput">
+                    <label for="documentType-{{i}}">Tipo de identificación</label>
+                    <select name="documentType" id="documentType-{{i}}" formControlName="documentType"
+                        > <!-- [compareWith]="handleSelected" -->
+                        <option *ngFor="let dt of documentTypeList" [id]="dt.id" [ngValue]="dt">{{dt.text}}</option>
+                    </select>
+                    <!-- <pre>{{client.value.documentType.id | json }}</pre> -->
+                </div>
+
+                <div class="documentNumber blockInput">
+                    <label for="documentNumber-{{i}}">Número de identificación</label>
+                    <input type="text" name="documentNumber" id="documentNumber-{{i}}"
+                        [value]="client.value.documentNumber" formControlName="documentNumber">
+                </div>
+
+                <h4>Tipo de rol</h4>
+                <!-- <app-check-button formControlName="roles"></app-check-button> -->
+
+                <button type="button" (click)="handleDeleteClient(i)">Eliminar cliente</button>
+
+                <hr>
+            </div>
+        </div>
+    </div>
+</form>
+
+<div class="footerButtons">
+    <button type="button" (click)="handleAddClient()">Agregar otro cliente</button>
+    <div>
+        <button type="button">Cancelar</button>
+        <button type="button" (click)="handleSaveClients()">Continuar</button>
+    </div>
+</div>
