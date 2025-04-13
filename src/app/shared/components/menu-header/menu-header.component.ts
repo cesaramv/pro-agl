@@ -1,10 +1,10 @@
 import { ChangeDetectionStrategy, Component, output } from '@angular/core';
-import { RouterLink } from '@angular/router';
+import { RouterLink, RouterLinkActive } from '@angular/router';
 
 @Component({
   selector: 'menu-header',
   standalone: true,
-  imports: [RouterLink],
+  imports: [RouterLink, RouterLinkActive],
   templateUrl: './menu-header.component.html',
   styleUrl: './menu-header.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,

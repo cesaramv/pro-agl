@@ -8,5 +8,9 @@ export const routes: Routes = [
     {
         path: 'forms',
         loadComponent: () => import('./pages/about/about.component').then(m => m.AboutComponent)
+    },
+    {
+        path: 'views',
+        loadComponent: () => import('./pages/views/views.component').then(m => m.ViewsComponent)
     }
 ];
