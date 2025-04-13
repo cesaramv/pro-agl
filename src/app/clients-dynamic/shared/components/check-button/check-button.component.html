@@ -1,0 +1,6 @@
+<section class="container-roles" [formControl]="rolesContol">
+    <div class="container-roles__btn-rol" *ngFor="let rol of roles; index as i">
+        <app-icon [icon]="rol.icon"></app-icon>
+        <label [id]="rol.id">{{rol.rol}}</label>
+    </div>
+</section>

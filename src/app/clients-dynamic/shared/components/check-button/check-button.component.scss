@@ -1,0 +1,10 @@
+.container-roles {
+    display: flex;
+    gap: 4px;
+    flex-flow: wrap;
+    &__btn-rol {
+        border: solid 1px #ccc;
+        border-radius: 4px;
+        padding: 1px 5px;
+    }
+}
