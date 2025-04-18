@@ -16,5 +16,13 @@ export const routes: Routes = [
     {
         path: 'views',
         loadComponent: () => import('./pages/views/views.component').then(m => m.ViewsComponent)
+    },
+    {
+        path: 'pokemons',
+        loadComponent: () => import('./pages/pokemons/pokemons.component')
+    },
+    {
+        path: 'pokemons/:id',
+        loadComponent: () => import('./pages/pokemon/pokemon.component').then(m => m.PokemonComponent)
     }
 ];
