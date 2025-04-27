@@ -1,5 +1,9 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import PokemonsComponent from './pokemons.component';
+import { PokemonsService } from '@/pokemons/services/pokemons.service';
+import { provideRouter } from '@angular/router';
+import { provideHttpClient } from '@angular/common/http';
+import { provideHttpClientTesting } from '@angular/common/http/testing';
 
 describe('PokemonsComponent', () => {
   let component: PokemonsComponent;
@@ -7,9 +11,10 @@ describe('PokemonsComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [PokemonsComponent]
+      imports: [PokemonsComponent],
+      providers: [provideRouter([]), provideHttpClient(), provideHttpClientTesting()]
     })
-    .compileComponents();
+      .compileComponents();
 
     fixture = TestBed.createComponent(PokemonsComponent);
     component = fixture.componentInstance;
@@ -17,6 +22,7 @@ describe('PokemonsComponent', () => {
   });
 
   it('should create', () => {
+    fixture.detectChanges();
     expect(component).toBeTruthy();
   });
 });
