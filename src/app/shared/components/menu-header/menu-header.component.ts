@@ -12,7 +12,7 @@ import { RouterLink, RouterLinkActive } from '@angular/router';
 export default class MenuHeaderComponent {
   public onClick = output<string>();
 
-  handleClick(){debugger
+  handleClick(){
     this.onClick.emit('Desde el button del menú');
   }
 }
