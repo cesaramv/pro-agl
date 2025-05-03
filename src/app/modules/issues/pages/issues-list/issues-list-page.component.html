@@ -1,0 +1,49 @@
+<main class="componentMain">
+    <h1>Github Issues</h1>
+    <dir class="my-5 border-b-2 border-blue-600"></dir>
+
+    <!-- Btuttons for controller the states -->
+    <section class="grid grid-cols-1 sm:grid-cols-3 gap-2">
+        <div class="col-span-3 flex felx-col">
+            <div class="flex gap-2">
+                <button class="btn active">All</button>
+                <button class="btn">Open</button>
+                <button class="btn">Closed</button>
+            </div>
+        </div>
+
+        <!-- list -->
+        <div class="mt-4 flex flex-col col-span-2">
+            <h3>Issues</h3>
+            @for (issue of issuessQuery.data(); track issue.id) {
+            <issue-item [issue]="issue" />
+            } @empty {
+            @if (issuessQuery.isLoading()) {
+            <p>Loading issues</p>
+            }@else {
+            <p>there are no issues to display</p>
+            }
+            }
+
+            <!-- TODO: spinner -->
+
+            <!-- TODO: else there is issues for filter -->
+        </div>
+
+
+        <!-- Labels -->
+        <div class="">
+            <h3>Labels</h3>
+            <!-- TODO: spinner -->
+            @if (labelsQuery.isLoading()) {
+            <p>Loading...</p>
+            } @else {
+
+            <issues-labels-selector [labels]="labelsQuery.data() ?? []" />
+            }
+            <!-- TODO: label selector -->
+        </div>
+    </section>
+
+
+</main>
