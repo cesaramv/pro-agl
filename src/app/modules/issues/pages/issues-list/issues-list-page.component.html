@@ -6,9 +6,18 @@
     <section class="grid grid-cols-1 sm:grid-cols-3 gap-2">
         <div class="col-span-3 flex felx-col">
             <div class="flex gap-2">
-                <button class="btn active">All</button>
-                <button class="btn">Open</button>
-                <button class="btn">Closed</button>
+                <button (click)="onChangeState('all')" [class.active]="issuesService.selectedState() === 'all'"
+                    class="btn active">
+                    All
+                </button>
+                <button (click)="onChangeState('open')" [class.active]="issuesService.selectedState() === 'open'"
+                    class="btn">
+                    Open
+                </button>
+                <button (click)="onChangeState('closed')" [class.active]="issuesService.selectedState() === 'closed'"
+                    class="btn">
+                    Closed
+                </button>
             </div>
         </div>
 

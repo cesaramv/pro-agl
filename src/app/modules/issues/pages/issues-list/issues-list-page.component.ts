@@ -2,6 +2,7 @@ import { Component, inject } from '@angular/core';
 import { IssuesService } from '../../services';
 import { LabelsSelectorComponent } from '../../components/labels-selector/labels-selector.component';
 import { IssueItemComponent } from '../../components/issue-item/issue-item.component';
+import { State } from '../../interfaces';
 
 @Component({
   selector: 'app-issues-list-page',
@@ -19,6 +20,16 @@ export default class IssuesListPageComponent {
 
   get issuessQuery() {
     return this.issuesService.issuessQuery;
+  }
+
+  onChangeState(newState: string){
+    const state = {
+      all: State.All,
+      open: State.Open,
+      closed: State.Closed
+    }[newState] ?? State.All;
+
+    this.issuesService.showSelectedState(state);
   }
 
 }
