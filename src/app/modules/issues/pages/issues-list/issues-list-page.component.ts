@@ -1,0 +1,35 @@
+import { Component, inject } from '@angular/core';
+import { IssuesService } from '../../services';
+import { LabelsSelectorComponent } from '../../components/labels-selector/labels-selector.component';
+import { IssueItemComponent } from '../../components/issue-item/issue-item.component';
+import { State } from '../../interfaces';
+
+@Component({
+  selector: 'app-issues-list-page',
+  standalone: true,
+  imports: [LabelsSelectorComponent, IssueItemComponent],
+  templateUrl: './issues-list-page.component.html'
+})
+export default class IssuesListPageComponent {
+
+  public issuesService = inject(IssuesService);
+
+  get labelsQuery() {
+    return this.issuesService.labelsQuery;
+  }
+
+  get issuessQuery() {
+    return this.issuesService.issuessQuery;
+  }
+
+  onChangeState(newState: string){
+    const state = {
+      all: State.All,
+      open: State.Open,
+      closed: State.Closed
+    }[newState] ?? State.All;
+
+    this.issuesService.showSelectedState(state);
+  }
+
+}

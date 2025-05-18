@@ -1,0 +1,24 @@
+import { Component, inject, input } from '@angular/core';
+import { IGitHubIssue, State } from '../../interfaces';
+import { RouterLink } from '@angular/router';
+import { NgStyle } from '@angular/common';
+import { IssueService } from '../../services';
+
+@Component({
+  selector: 'issue-item',
+  standalone: true,
+  imports: [RouterLink, NgStyle],
+  templateUrl: './issue-item.component.html'
+})
+export class IssueItemComponent {
+  public issue = input.required<IGitHubIssue>();
+  private issueService = inject(IssueService);
+
+  get isOpen() {
+    return this.issue().state === State.Open;
+  }
+
+  prefetchData(){
+    this.issueService.setIssueData(this.issue());
+  }
+}
