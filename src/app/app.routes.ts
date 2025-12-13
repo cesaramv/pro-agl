@@ -1,4 +1,5 @@
 import { Routes } from '@angular/router';
+import { QrComponent } from './pages/qr/qr.component';
 
 export const routes: Routes = [
     {
@@ -32,6 +33,10 @@ export const routes: Routes = [
     {
         path: 'issue/:number',
         loadComponent: () => import('./modules/issues/pages/issue/issue-page.component')
+    },
+    {
+        path: 'qr',
+        loadComponent: () => import('./pages/qr/qr.component').then(m => m.QrComponent)
     },
     {
         path: '**',
