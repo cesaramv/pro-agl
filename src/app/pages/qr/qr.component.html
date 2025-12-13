@@ -1,0 +1,15 @@
+<main>
+    <div class="componentMain text-center">
+        <form [formGroup]="form" action="" class="flex flex-col gap-2">
+            <h1>Generador de código QR</h1>
+            <p class="text-aviso"></p>
+            <input formControlName="textToQR" type="text" class="text-input p-2 rounded-md text-gray-950"
+                placeholder="Ingresa el texto para generar el código QR">
+            <button class="btn-generar" (click)="generateQR()">Generar Código QR</button>
+            <div class="qrcode border-ember-700 bg-white">
+                <qr-code lightColor="#0000000" darkColor="#24c765" [size]="300" [value]="qrCode" errorCorrectionLevel="M" centerImageSrc="img/icons/cart-svgrepo-com.svg" centerImageSize="50"></qr-code>
+            </div>
+            <button class="btn-descargar">Descargar Código QR</button>
+        </form>
+    </div>
+</main>
